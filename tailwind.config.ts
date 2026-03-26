@@ -9,8 +9,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        gold: {
+          DEFAULT: "#D4A853",
+          light: "#E8C97A",
+          dark: "#B8922E",
+        },
+        dark: {
+          DEFAULT: "#0A0A0A",
+          card: "#141414",
+          surface: "#1A1A1A",
+          border: "#2A2A2A",
+        },
+      },
+      fontFamily: {
+        display: ["var(--font-playfair)", "serif"],
+        body: ["var(--font-inter)", "sans-serif"],
       },
     },
   },
