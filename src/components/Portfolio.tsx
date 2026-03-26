@@ -15,14 +15,12 @@ const ITEMS: PortfolioItem[] = [
   // Bathrooms
   { src: "bathroom-luxury-tub-chandelier.jpg", alt: "Luxury freestanding soaking tub beneath a crystal chandelier — custom master bath by Epic Homes, Bee Cave TX", category: "Bathrooms" },
   { src: "bathroom-dark-marble-tub.jpg", alt: "Dark marble spa bathroom with deep soaking tub and floor-to-ceiling stone — Epic Homes custom build", category: "Bathrooms" },
-  { src: "bathroom-dark-marble-shower.jpg", alt: "Walk-in glass shower with dark marble walls and rainfall showerhead — luxury bathroom renovation", category: "Bathrooms" },
   { src: "bathroom-wave-tile-shower.jpg", alt: "Custom wave-pattern tile shower with frameless glass enclosure — contemporary bath design", category: "Bathrooms" },
   { src: "bathroom-marble-glass-enclosure.jpg", alt: "Marble-clad shower with full glass enclosure and polished nickel fixtures — master bathroom remodel", category: "Bathrooms" },
   { src: "bathroom-marble-bench-shower.jpg", alt: "Oversized marble shower with built-in bench seat and niche shelving — spa-inspired bathroom", category: "Bathrooms" },
   { src: "bathroom-double-vanity-classic.jpg", alt: "Classic double vanity with framed mirrors and marble countertops — elegant master bathroom", category: "Bathrooms" },
   { src: "bathroom-double-vanity-oak.jpg", alt: "White oak floating double vanity with LED wall sconces and vessel sinks — modern bath design", category: "Bathrooms" },
   { src: "bathroom-powder-room-modern.jpg", alt: "Modern powder room with statement wallcovering and floating vanity — custom home detail", category: "Bathrooms" },
-  { src: "bathroom-spa-master-suite.jpg", alt: "Full spa master suite with freestanding tub, walk-in shower, and custom cabinetry — Epic Homes", category: "Bathrooms" },
   { src: "bathroom-spa-wide-angle.jpg", alt: "Panoramic view of luxury master bath featuring dual vanities, soaking tub, and natural stone", category: "Bathrooms" },
   { src: "bathroom-freestanding-tub-window.jpg", alt: "Freestanding bathtub positioned beneath a picture window with garden views — relaxing retreat", category: "Bathrooms" },
   // Kitchens
@@ -37,7 +35,6 @@ const ITEMS: PortfolioItem[] = [
   { src: "dining-room-dark-cabinet.jpg", alt: "Formal dining room with dark built-in cabinetry and statement chandelier — luxury interior", category: "Living" },
   // Exterior
   { src: "exterior-covered-patio.jpg", alt: "Covered patio with retractable glass doors opening to the backyard — indoor-outdoor living", category: "Exterior" },
-  { src: "exterior-patio-glass-doors.jpg", alt: "Panoramic patio with floor-to-ceiling glass doors and Hill Country views — Bee Cave TX", category: "Exterior" },
   { src: "exterior-custom-home-front.jpg", alt: "Custom home taking shape during construction — steel framing and stone facade in progress", category: "Exterior" },
   { src: "exterior-finished-entrance.jpg", alt: "Grand entrance with stone columns and custom iron door — completed luxury home by Epic Homes", category: "Exterior" },
   { src: "exterior-prairie-modern.jpg", alt: "Prairie-modern custom home with clean lines, natural stone, and standing-seam metal roof", category: "Exterior" },
