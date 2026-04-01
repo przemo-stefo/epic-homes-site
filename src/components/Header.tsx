@@ -8,8 +8,8 @@ import { SITE } from "@/lib/site-config";
 const NAV_LINKS = [
   { label: "Services", href: "#services" },
   { label: "Portfolio", href: "#portfolio" },
-  { label: "Process", href: "#process" },
   { label: "About", href: "#about" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 

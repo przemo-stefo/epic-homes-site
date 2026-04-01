@@ -4,6 +4,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 88px; /* fixed header h-20 (80px) + 8px breathing room */
 }
 
 body {

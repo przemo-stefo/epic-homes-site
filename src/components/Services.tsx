@@ -68,6 +68,16 @@ export default function Services() {
             </div>
           ))}
         </div>
+
+        {/* CTA */}
+        <div className="text-center mt-14 fade-in flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#contact" className="btn-gold text-center">
+            Get a Free Estimate
+          </a>
+          <a href="#portfolio" className="btn-outline-gold text-center">
+            View All Projects
+          </a>
+        </div>
       </div>
     </section>
   );

@@ -11,7 +11,10 @@ export default function Footer() {
           <div>
             <h3 className="font-display text-2xl text-gold font-bold mb-3">EPIC HOMES</h3>
             <p className="text-gray-500 text-sm leading-relaxed">
-              Custom home builder serving {SITE.areas}. Licensed &amp; insured.
+              Custom home builder serving {SITE.areas}. Licensed &amp; insured in the state of Texas.
+            </p>
+            <p className="text-gray-600 text-xs mt-2">
+              TX General Contractor &bull; Fully Insured &bull; Workers&apos; Comp Coverage
             </p>
           </div>
 
@@ -19,7 +22,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Quick Links</h4>
             <nav aria-label="Footer navigation" className="space-y-2">
-              {["Services", "Portfolio", "Process", "About", "Contact"].map((link) => (
+              {["Services", "Portfolio", "About", "FAQ", "Contact"].map((link) => (
                 <a
                   key={link}
                   href={`#${link.toLowerCase()}`}

@@ -1,5 +1,5 @@
 // src/components/Contact.tsx
-// Purpose: Contact section with info, Google Maps embed, and quote form
+// Purpose: Contact section with info, Google Maps embed, and working quote form
 "use client";
 
 import { useState, FormEvent } from "react";
@@ -7,6 +7,7 @@ import { SITE } from "@/lib/site-config";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   function validate(data: FormData): Record<string, string> {
@@ -17,15 +18,25 @@ export default function Contact() {
     return errs;
   }
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  function openMailto(name: string, email: string, phone: string, service: string, message: string) {
+    const subject = encodeURIComponent(`Quote Request from ${name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\n\n${message}`
+    );
+    window.open(`mailto:${SITE.email}?subject=${subject}&body=${body}`, "_blank");
+  }
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const data = new FormData(form);
     const errs = validate(data);
     if (Object.keys(errs).length > 0) {
       setErrors(errs);
       return;
     }
     setErrors({});
+    setSubmitting(true);
 
     const name = data.get("name") as string;
     const email = data.get("email") as string;
@@ -33,13 +44,27 @@ export default function Contact() {
     const service = data.get("service") as string;
     const message = data.get("message") as string;
 
-    const subject = encodeURIComponent(`Quote Request from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\n\n${message}`
-    );
-    const mailto = `mailto:${SITE.email}?subject=${subject}&body=${body}`;
-    window.open(mailto, "_blank");
-    setSubmitted(true);
+    try {
+      // Send to n8n webhook on ewa208
+      const res = await fetch("https://n8n-epic.feedmasters.org/webhook/contact-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, phone, service, message }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        // Fallback to mailto
+        openMailto(name, email, phone, service, message);
+        setSubmitted(true);
+      }
+    } catch {
+      // Fallback to mailto on network error
+      openMailto(name, email, phone, service, message);
+      setSubmitted(true);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -80,7 +105,7 @@ export default function Contact() {
             {/* Google Maps */}
             <div className="rounded-lg overflow-hidden border border-dark-border h-64">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3448.5!2d-97.9469!3d30.3085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDE4JzMwLjYiTiA5N8KwNTYnNDguOCJX!5e0!3m2!1sen!2sus!4v1"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=11805+Bee+Cave+Rd,+Bee+Cave,+TX+78738&zoom=14"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: "invert(90%) hue-rotate(180deg)" }}
@@ -91,6 +116,19 @@ export default function Contact() {
                 title="Epic Homes Construction office location on Google Maps"
               />
             </div>
+
+            {/* Google Business link */}
+            <a
+              href="https://www.google.com/maps/place/Epic+Homes+Construction"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 text-sm text-gray-400 hover:text-gold transition-colors"
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+              View on Google Maps &rarr;
+            </a>
           </div>
 
           {/* Quote form */}
@@ -103,6 +141,7 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+                <input type="hidden" name="_subject" value="New Quote Request — Epic Homes Website" />
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="contact-name" className="sr-only">Your Name</label>
@@ -149,12 +188,12 @@ export default function Contact() {
                   <label htmlFor="contact-service" className="sr-only">Select a Service</label>
                   <select id="contact-service" name="service" className="form-input">
                     <option value="">Select a Service</option>
-                    <option value="custom-home">Custom Home Building</option>
-                    <option value="kitchen">Kitchen Remodeling</option>
-                    <option value="bathroom">Bathroom Renovation</option>
-                    <option value="outdoor">Outdoor Living</option>
-                    <option value="remodeling">General Remodeling</option>
-                    <option value="other">Other</option>
+                    <option value="Custom Home Building">Custom Home Building</option>
+                    <option value="Kitchen Remodeling">Kitchen Remodeling</option>
+                    <option value="Bathroom Renovation">Bathroom Renovation</option>
+                    <option value="Outdoor Living">Outdoor Living</option>
+                    <option value="General Remodeling">General Remodeling</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
                 <div>
@@ -170,9 +209,10 @@ export default function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-4 bg-gold text-dark font-bold text-lg rounded hover:bg-gold-light transition-colors"
+                  disabled={submitting}
+                  className="w-full py-4 bg-gold text-dark font-bold text-lg rounded hover:bg-gold-light transition-colors disabled:opacity-50"
                 >
-                  Request a Free Estimate
+                  {submitting ? "Sending..." : "Request a Free Estimate"}
                 </button>
               </form>
             )}
