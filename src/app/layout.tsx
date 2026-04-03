@@ -1,19 +1,14 @@
 // src/app/layout.tsx
 // Purpose: Root layout with SEO metadata, fonts, and LocalBusiness schema
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Raleway } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const raleway = Raleway({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-raleway",
   display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -76,54 +71,18 @@ const jsonLd = {
   image: "/images/portfolio/exterior-finished-entrance.jpg",
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "How long does it take to build a custom home?",
-      acceptedAnswer: { "@type": "Answer", text: "A typical custom home takes 10–14 months from permits to move-in, depending on size and complexity." },
-    },
-    {
-      "@type": "Question",
-      name: "What areas do you serve?",
-      acceptedAnswer: { "@type": "Answer", text: "We build primarily in Bee Cave, Kingsland, and the greater Austin TX area. We also serve the Schiller Park area in Illinois." },
-    },
-    {
-      "@type": "Question",
-      name: "Do you offer financing options?",
-      acceptedAnswer: { "@type": "Answer", text: "While we don't provide direct financing, we work with several trusted lenders who specialize in construction loans." },
-    },
-    {
-      "@type": "Question",
-      name: "Are you licensed and insured?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes. Epic Homes Construction is fully licensed and insured in the state of Texas with general liability and workers' compensation coverage." },
-    },
-    {
-      "@type": "Question",
-      name: "Do you handle permits and inspections?",
-      acceptedAnswer: { "@type": "Answer", text: "Absolutely. We manage the entire permitting process, schedule all required inspections, and ensure your project meets all local building codes." },
-    },
-  ],
-};
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="en" className={raleway.variable}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-        />
         <link rel="preconnect" href="https://www.google.com" />
         <link rel="dns-prefetch" href="https://www.google.com" />
       </head>
-      <body className="font-body antialiased">
+      <body className="font-display antialiased">
         <a href="#main" className="skip-to-content">Skip to content</a>
         <main id="main">{children}</main>
       </body>

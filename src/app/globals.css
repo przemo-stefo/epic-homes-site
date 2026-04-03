@@ -4,11 +4,11 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 88px; /* fixed header h-20 (80px) + 8px breathing room */
+  scroll-padding-top: 88px;
 }
 
 body {
-  background: #0A0A0A;
+  background: #262626;
   color: #E5E5E5;
 }
 
@@ -20,8 +20,8 @@ body {
   transform: translateX(-50%);
   z-index: 100;
   padding: 12px 24px;
-  background: #D4A853;
-  color: #0A0A0A;
+  background: #9A8A78;
+  color: #262626;
   font-weight: 600;
   border-radius: 0 0 8px 8px;
   transition: top 0.2s;
@@ -30,9 +30,9 @@ body {
   top: 0;
 }
 
-/* Gold gradient text */
+/* Gold/tan gradient text */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #D4A853 0%, #E8C97A 50%, #D4A853 100%);
+  background: linear-gradient(135deg, #9A8A78 0%, #B3A89A 50%, #9A8A78 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -41,29 +41,33 @@ body {
 /* Shared button styles */
 .btn-gold {
   display: inline-block;
-  padding: 14px 32px;
-  background: #D4A853;
-  color: #0A0A0A;
+  padding: 12px 28px;
+  background: #9A8A78;
+  color: #fff;
   font-weight: 600;
-  font-size: 1.125rem;
-  border-radius: 6px;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 0;
   transition: background-color 0.2s;
 }
 .btn-gold:hover {
-  background: #E8C97A;
+  background: #B3A89A;
 }
 .btn-outline-gold {
   display: inline-block;
-  padding: 14px 32px;
-  border: 2px solid #D4A853;
-  color: #D4A853;
+  padding: 12px 28px;
+  border: 2px solid #9A8A78;
+  color: #9A8A78;
   font-weight: 600;
-  font-size: 1.125rem;
-  border-radius: 6px;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 0;
   transition: background-color 0.2s;
 }
 .btn-outline-gold:hover {
-  background: rgba(212, 168, 83, 0.1);
+  background: rgba(154, 138, 120, 0.1);
 }
 
 /* Fade in on scroll */
@@ -88,80 +92,44 @@ body {
 .stagger-children.visible > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
 .stagger-children.visible > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
 
-/* Respect reduced motion preference */
+/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .fade-in,
-  .stagger-children > * {
-    opacity: 1;
-    transform: none;
-    transition: none;
+  .fade-in, .stagger-children > * {
+    opacity: 1; transform: none; transition: none;
   }
   .img-zoom img { transition: none; }
   .img-zoom:hover img { transform: none; }
 }
 
 /* Image hover zoom */
-.img-zoom {
-  overflow: hidden;
-}
-.img-zoom img {
-  transition: transform 0.6s ease;
-}
-.img-zoom:hover img {
-  transform: scale(1.05);
-}
-
-/* Gold underline */
-.gold-underline {
-  position: relative;
-  display: inline-block;
-}
-.gold-underline::after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 60px;
-  height: 2px;
-  background: #D4A853;
-}
+.img-zoom { overflow: hidden; }
+.img-zoom img { transition: transform 0.6s ease; }
+.img-zoom:hover img { transform: scale(1.05); }
 
 /* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #0A0A0A;
-}
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #D4A853;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #262626; }
+::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #9A8A78; }
 
 /* Form inputs */
 .form-input {
   width: 100%;
-  padding: 14px 18px;
-  background: #1A1A1A;
-  border: 1px solid #2A2A2A;
-  border-radius: 8px;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #666;
   color: #E5E5E5;
   font-size: 14px;
   transition: border-color 0.2s;
 }
 .form-input:focus {
   outline: none;
-  border-color: #D4A853;
+  border-bottom-color: #9A8A78;
 }
 .form-input::placeholder {
-  color: #666;
-}
-.form-input:invalid:not(:placeholder-shown) {
-  border-color: #ef4444;
+  color: #999;
 }
 select.form-input {
   appearance: none;

@@ -42,7 +42,7 @@ export default function Services() {
     <section id="services" className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Services: Image + Text side by side */}
-        <div className="grid md:grid-cols-2 gap-0 mb-20 rounded-lg overflow-hidden border border-dark-border fade-in">
+        <div className="grid md:grid-cols-2 gap-0 mb-20 overflow-hidden fade-in">
           {/* Image side */}
           <div className="relative h-80 md:h-auto min-h-[400px]">
             <Image
@@ -86,7 +86,7 @@ export default function Services() {
           {FEATURES.map((feature) => (
             <div
               key={feature.title}
-              className="bg-dark-card border border-dark-border rounded-lg p-8 text-center hover:border-gold/30 transition-colors"
+              className="bg-dark-card border border-dark-border p-8 text-center hover:border-gold/30 transition-colors"
             >
               <div className="flex justify-center mb-4">{feature.icon}</div>
               <p className="text-white font-semibold text-sm uppercase tracking-wider">

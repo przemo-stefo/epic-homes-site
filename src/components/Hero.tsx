@@ -21,14 +21,13 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        <h1 className="font-display text-5xl md:text-7xl font-bold text-white leading-tight mb-4">
-          Epic Homes
-          <span className="block text-gold-gradient">Construction</span>
+        <h1 className="font-display text-4xl md:text-6xl font-semibold text-white leading-tight mb-4 tracking-wide">
+          Epic Homes Construction
         </h1>
-        <p className="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto mb-10 font-body tracking-wide">
+        <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-10 tracking-wider">
           New Build and Remodeling Services
         </p>
-        <a href="#contact" className="btn-gold text-center text-lg px-10 py-4">
+        <a href="#contact" className="btn-outline-gold text-center">
           Let&apos;s Build
         </a>
       </div>

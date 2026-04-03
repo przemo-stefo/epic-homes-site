@@ -10,20 +10,20 @@ const config: Config = {
     extend: {
       colors: {
         gold: {
-          DEFAULT: "#D4A853",
-          light: "#E8C97A",
-          dark: "#B8922E",
+          DEFAULT: "#9A8A78",
+          light: "#B3A89A",
+          dark: "#7D7060",
         },
         dark: {
-          DEFAULT: "#0A0A0A",
-          card: "#141414",
-          surface: "#1A1A1A",
-          border: "#2A2A2A",
+          DEFAULT: "#262626",
+          card: "#1E1E1E",
+          surface: "#333333",
+          border: "#444444",
         },
       },
       fontFamily: {
-        display: ["var(--font-playfair)", "serif"],
-        body: ["var(--font-inter)", "sans-serif"],
+        display: ["var(--font-raleway)", "sans-serif"],
+        body: ["var(--font-raleway)", "sans-serif"],
       },
     },
   },

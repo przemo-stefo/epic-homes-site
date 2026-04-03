@@ -46,7 +46,7 @@ export default function Header() {
           ))}
           <a
             href={SITE.phoneHref}
-            className="ml-4 px-6 py-2.5 bg-gold text-dark font-semibold text-sm rounded hover:bg-gold-light transition-colors uppercase tracking-wider"
+            className="ml-4 px-6 py-2.5 border-2 border-gold text-gold font-semibold text-sm hover:bg-gold hover:text-white transition-colors uppercase tracking-wider"
             aria-label={`Call us at ${SITE.phone}`}
           >
             Call Now
