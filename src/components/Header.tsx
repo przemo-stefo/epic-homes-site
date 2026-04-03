@@ -6,10 +6,9 @@ import { useState, useEffect } from "react";
 import { SITE } from "@/lib/site-config";
 
 const NAV_LINKS = [
+  { label: "Home", href: "#" },
   { label: "Services", href: "#services" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "About", href: "#about" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Projects", href: "#portfolio" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -47,10 +46,10 @@ export default function Header() {
           ))}
           <a
             href={SITE.phoneHref}
-            className="ml-4 px-6 py-2.5 bg-gold text-dark font-semibold text-sm rounded hover:bg-gold-light transition-colors"
+            className="ml-4 px-6 py-2.5 bg-gold text-dark font-semibold text-sm rounded hover:bg-gold-light transition-colors uppercase tracking-wider"
             aria-label={`Call us at ${SITE.phone}`}
           >
-            {SITE.phone}
+            Call Now
           </a>
         </nav>
 

@@ -1,12 +1,11 @@
 // src/app/page.tsx
-// Purpose: Main page composing all sections — server-rendered for SEO crawlers
+// Purpose: Main page composing all sections — Wix-style layout order
 import ScrollRevealWrapper from "@/components/ScrollRevealWrapper";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-import Portfolio from "@/components/Portfolio";
-import Testimonials from "@/components/Testimonials";
 import About from "@/components/About";
+import Portfolio from "@/components/Portfolio";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -18,9 +17,8 @@ export default function Home() {
       <Header />
       <Hero />
       <Services />
-      <Portfolio />
-      <Testimonials />
       <About />
+      <Portfolio />
       <FAQ />
       <Contact />
       <Footer />

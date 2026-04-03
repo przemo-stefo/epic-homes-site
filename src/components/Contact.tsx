@@ -18,10 +18,10 @@ export default function Contact() {
     return errs;
   }
 
-  function openMailto(name: string, email: string, phone: string, service: string, message: string) {
+  function openMailto(name: string, email: string, phone: string, address: string, message: string) {
     const subject = encodeURIComponent(`Quote Request from ${name}`);
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\n\n${message}`
+      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nAddress: ${address}\n\n${message}`
     );
     window.open(`mailto:${SITE.email}?subject=${subject}&body=${body}`, "_blank");
   }
@@ -41,7 +41,7 @@ export default function Contact() {
     const name = data.get("name") as string;
     const email = data.get("email") as string;
     const phone = data.get("phone") as string;
-    const service = data.get("service") as string;
+    const address = data.get("address") as string;
     const message = data.get("message") as string;
 
     try {
@@ -49,18 +49,18 @@ export default function Contact() {
       const res = await fetch("https://n8n-epic.feedmasters.org/webhook/contact-form", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone, service, message }),
+        body: JSON.stringify({ name, email, phone, address, message }),
       });
       if (res.ok) {
         setSubmitted(true);
       } else {
         // Fallback to mailto
-        openMailto(name, email, phone, service, message);
+        openMailto(name, email, phone, address, message);
         setSubmitted(true);
       }
     } catch {
       // Fallback to mailto on network error
-      openMailto(name, email, phone, service, message);
+      openMailto(name, email, phone, address, message);
       setSubmitted(true);
     } finally {
       setSubmitting(false);
@@ -72,7 +72,7 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 fade-in">
           <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
-            Get In <span className="text-gold">Touch</span>
+            Contact <span className="text-gold">Us</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
             Ready to start your project? Contact us for a free consultation and estimate.
@@ -142,42 +142,29 @@ export default function Contact() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5" noValidate>
                 <input type="hidden" name="_subject" value="New Quote Request — Epic Homes Website" />
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="contact-name" className="sr-only">Your Name</label>
-                    <input
-                      id="contact-name"
-                      name="name"
-                      required
-                      maxLength={100}
-                      placeholder="Your Name"
-                      className="form-input"
-                      aria-invalid={!!errors.name}
-                      aria-describedby={errors.name ? "name-error" : undefined}
-                    />
-                    {errors.name && <p id="name-error" className="text-red-400 text-xs mt-1">{errors.name}</p>}
-                  </div>
-                  <div>
-                    <label htmlFor="contact-phone" className="sr-only">Phone Number</label>
-                    <input
-                      id="contact-phone"
-                      name="phone"
-                      type="tel"
-                      maxLength={20}
-                      placeholder="Phone Number"
-                      className="form-input"
-                    />
-                  </div>
+                <div>
+                  <label htmlFor="contact-name" className="sr-only">Full Name</label>
+                  <input
+                    id="contact-name"
+                    name="name"
+                    required
+                    maxLength={100}
+                    placeholder="Full Name"
+                    className="form-input"
+                    aria-invalid={!!errors.name}
+                    aria-describedby={errors.name ? "name-error" : undefined}
+                  />
+                  {errors.name && <p id="name-error" className="text-red-400 text-xs mt-1">{errors.name}</p>}
                 </div>
                 <div>
-                  <label htmlFor="contact-email" className="sr-only">Email Address</label>
+                  <label htmlFor="contact-email" className="sr-only">Email</label>
                   <input
                     id="contact-email"
                     name="email"
                     type="email"
                     required
                     maxLength={254}
-                    placeholder="Email Address"
+                    placeholder="Email *"
                     className="form-input"
                     aria-invalid={!!errors.email}
                     aria-describedby={errors.email ? "email-error" : undefined}
@@ -185,25 +172,34 @@ export default function Contact() {
                   {errors.email && <p id="email-error" className="text-red-400 text-xs mt-1">{errors.email}</p>}
                 </div>
                 <div>
-                  <label htmlFor="contact-service" className="sr-only">Select a Service</label>
-                  <select id="contact-service" name="service" className="form-input">
-                    <option value="">Select a Service</option>
-                    <option value="Custom Home Building">Custom Home Building</option>
-                    <option value="Kitchen Remodeling">Kitchen Remodeling</option>
-                    <option value="Bathroom Renovation">Bathroom Renovation</option>
-                    <option value="Outdoor Living">Outdoor Living</option>
-                    <option value="General Remodeling">General Remodeling</option>
-                    <option value="Other">Other</option>
-                  </select>
+                  <label htmlFor="contact-phone" className="sr-only">Phone</label>
+                  <input
+                    id="contact-phone"
+                    name="phone"
+                    type="tel"
+                    maxLength={20}
+                    placeholder="Phone"
+                    className="form-input"
+                  />
                 </div>
                 <div>
-                  <label htmlFor="contact-message" className="sr-only">Tell us about your project</label>
+                  <label htmlFor="contact-address" className="sr-only">Address</label>
+                  <input
+                    id="contact-address"
+                    name="address"
+                    maxLength={200}
+                    placeholder="Address"
+                    className="form-input"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="contact-message" className="sr-only">Message</label>
                   <textarea
                     id="contact-message"
                     name="message"
                     rows={4}
                     maxLength={2000}
-                    placeholder="Tell us about your project..."
+                    placeholder="Message *"
                     className="form-input resize-none"
                   />
                 </div>
@@ -212,7 +208,7 @@ export default function Contact() {
                   disabled={submitting}
                   className="w-full py-4 bg-gold text-dark font-bold text-lg rounded hover:bg-gold-light transition-colors disabled:opacity-50"
                 >
-                  {submitting ? "Sending..." : "Request a Free Estimate"}
+                  {submitting ? "Sending..." : "Submit"}
                 </button>
               </form>
             )}

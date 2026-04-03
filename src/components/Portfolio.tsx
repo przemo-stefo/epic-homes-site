@@ -200,7 +200,7 @@ export default function Portfolio() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 fade-in">
             <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
-              Our <span className="text-gold">Portfolio</span>
+              Recent <span className="text-gold">Projects</span>
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
               Real projects. Real craftsmanship. Browse our completed work.
