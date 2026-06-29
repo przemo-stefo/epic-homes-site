@@ -72,6 +72,26 @@ export default function Services() {
                 <span className="w-2 h-2 bg-gold rounded-full shrink-0" />
                 General Contractor Services
               </li>
+              <li className="flex items-center gap-3 text-gray-300 text-lg">
+                <span className="w-2 h-2 bg-gold rounded-full shrink-0" />
+                New Construction Build
+              </li>
+              <li className="flex items-center gap-3 text-gray-300 text-lg">
+                <span className="w-2 h-2 bg-gold rounded-full shrink-0" />
+                Home Remodeling
+              </li>
+              <li className="flex items-center gap-3 text-gray-300 text-lg">
+                <span className="w-2 h-2 bg-gold rounded-full shrink-0" />
+                Kitchen Remodeling
+              </li>
+              <li className="flex items-center gap-3 text-gray-300 text-lg">
+                <span className="w-2 h-2 bg-gold rounded-full shrink-0" />
+                Bathroom Remodeling
+              </li>
+              <li className="flex items-center gap-3 text-gray-300 text-lg">
+                <span className="w-2 h-2 bg-gold rounded-full shrink-0" />
+                Home Additions
+              </li>
             </ul>
             <div>
               <a href="#portfolio" className="btn-outline-gold">

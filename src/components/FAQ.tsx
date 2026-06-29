@@ -11,7 +11,7 @@ const FAQS = [
   },
   {
     q: "What areas do you serve?",
-    a: "We build primarily in Bee Cave, Kingsland, and the greater Austin TX area. We also serve the Schiller Park area in Illinois. Contact us if you're in a nearby area — we're happy to discuss your project.",
+    a: "We build primarily in Bee Cave, Kingsland, Oak Hill (78736), and the greater Austin TX area. We also serve the Schiller Park area in Illinois. Contact us if you're in a nearby area — we're happy to discuss your project.",
   },
   {
     q: "Do you offer financing options?",

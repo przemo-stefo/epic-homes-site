@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     "luxury bathroom remodel",
     "kitchen renovation Bee Cave",
     "custom home construction Texas",
+    "home remodeling Austin 78736",
   ],
   openGraph: {
     title: "Epic Homes Construction | Custom Home Builder",
@@ -65,7 +66,7 @@ const jsonLd = {
   geo: { "@type": "GeoCoordinates", latitude: 30.3085, longitude: -97.9469 },
   founder: { "@type": "Person", name: "Adrian Glodz", jobTitle: "President" },
   foundingDate: "2016",
-  areaServed: ["Bee Cave, TX", "Kingsland, TX", "Austin, TX", "Schiller Park, IL"],
+  areaServed: ["Bee Cave, TX", "Kingsland, TX", "Austin, TX 78736", "Oak Hill, TX", "Schiller Park, IL"],
   numberOfEmployees: { "@type": "QuantitativeValue", minValue: 5, maxValue: 20 },
   priceRange: "$$$",
   image: "/images/portfolio/exterior-finished-entrance.jpg",
